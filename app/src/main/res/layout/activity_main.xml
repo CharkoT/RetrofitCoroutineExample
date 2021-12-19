@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.charko.retrofitcoroutineexample.MainViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <EditText
+            android:id="@+id/name_et"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:hint="input search username"
+            android:layout_marginEnd="16dp"
+            android:text="@={viewmodel.searchText}"
+            app:layout_constraintBottom_toBottomOf="@+id/search_btn"
+            app:layout_constraintEnd_toStartOf="@+id/search_btn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/search_btn" />
+
+        <ImageView
+            android:id="@+id/search_btn"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_marginTop="16dp"
+            android:clickable="true"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/bg_black_radius_2"
+            android:onClick="@{() -> viewmodel.onClickSearch()}"
+            android:src="@drawable/ic_search"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/user_rv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            main.items="@{viewmodel.users}"
+            android:layout_marginTop="36dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/search_btn"
+            tools:listitem="@layout/main_user_item" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

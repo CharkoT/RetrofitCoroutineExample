@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="user"
+            type="com.charko.retrofitcoroutineexample.model.UserInfo" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/avatar_iv"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:background="@drawable/bg_black_radius_2" />
+
+        <TextView
+            android:id="@+id/user_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@{user.login}"
+            app:layout_constraintStart_toEndOf="@+id/avatar_iv"
+            app:layout_constraintTop_toTopOf="@+id/avatar_iv"
+            tools:text="username" />
+
+        <TextView
+            android:id="@+id/url_link_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:text="@{user.html_url}"
+            app:layout_constraintStart_toEndOf="@+id/avatar_iv"
+            app:layout_constraintTop_toBottomOf="@+id/user_name_tv"
+            tools:text="https://github.com/username" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
