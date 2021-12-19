@@ -28,5 +28,5 @@ class Retrofit {
 
     }
 
-    fun requestUsers(query: String): Call<APIModel> = githubService.searchUsers(query)
+    suspend fun requestUsers(query: String): APIModel = githubService.searchUsers(query)
 }
